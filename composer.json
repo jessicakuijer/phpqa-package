@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Install\\PhpqaPackage\\": "src/"
+            "Install\\PhpqaPackage\\": "/"
         }
     },
     "scripts": {

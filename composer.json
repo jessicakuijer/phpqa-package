@@ -1,5 +1,5 @@
 {
-    "name": "install/phpqa-package",
+    "name": "phpqa/phpqa-package",
     "description": "Use simple script or grumphp to use custom phpQA tools on your projects",
     "require": {
         "phpro/grumphp": "^2.2",

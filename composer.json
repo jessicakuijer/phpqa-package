@@ -33,5 +33,6 @@
         "allow-plugins": {
             "phpro/grumphp": true
         }
-    }
+    },
+    "prefer-stable": true
 }

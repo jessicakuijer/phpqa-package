@@ -21,7 +21,9 @@
     "scripts": {
         "phpmd": [
             "./vendor/bin/phpmd ./src text phpmd.xml"
-        ]      
+        ],
+        "post-install-cmd": "php scripts/copy-configs.php",
+        "post-update-cmd": "php scripts/copy-configs.php"      
     },
     "authors": [
         {

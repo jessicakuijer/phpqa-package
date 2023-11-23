@@ -13,49 +13,35 @@ $dirs = [
     'kaktus'
 ];
 
-// Copie des fichiers de configuration
 foreach ($configs as $file) {
     $source = __DIR__ . '/' . $file;
     $destination = getcwd() . '/' . $file;
-    if (!file_exists($destination)) {
-        copy($source, $destination);
-    }
+    copy($source, $destination); // Supprimez la vérification de l'existence du fichier
 }
 
-// Copie des dossiers
 foreach ($dirs as $dir) {
     $sourceDir = __DIR__ . '/' . $dir;
     $destDir = getcwd() . '/' . $dir;
+
     if (!is_dir($destDir)) {
         mkdir($destDir, 0755, true);
     }
 
-    $files = new RecursiveIteratorIterator(
+    $iterator = new RecursiveIteratorIterator(
         new RecursiveDirectoryIterator($sourceDir, RecursiveDirectoryIterator::SKIP_DOTS),
         RecursiveIteratorIterator::SELF_FIRST
     );
 
-    foreach ($files as $fileInfo) {
-        $targetPath = $destDir;
+    foreach ($iterator as $item) {
+        $subPathName = $iterator->getSubPathName();
+        $destinationPath = $destDir . '/' . $subPathName;
 
-        if ($fileInfo->isDir()) {
-            // Créer un sous-dossier si nécessaire
-            if (!is_dir($targetPath)) {
-                mkdir($targetPath, 0755, true);
+        if ($item->isDir()) {
+            if (!is_dir($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
             }
         } else {
-            // Copier un fichier
-            copy($fileInfo->getRealPath(), $targetPath);
-        }
-
-        if ($fileInfo->isDir()) {
-            // Créer un sous-dossier si nécessaire
-            if (!is_dir($targetPath)) {
-                mkdir($targetPath, 0755, true);
-            }
-        } else {
-            // Copier un fichier
-            copy($fileInfo->getRealPath(), $targetPath);
+            copy($item, $destinationPath); // Ici aussi, supprimez la vérification de l'existence du fichier
         }
     }
 }

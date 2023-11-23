@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../../autoload.php';
 
 // Chemins des fichiers de configuration dans votre package
 $configs = [

@@ -21,11 +21,6 @@
             "php script-de-decompression.php"
         ]
     },
-    "autoload": {
-        "psr-4": {
-            "Install\\PhpqaPackage\\": "/"
-        }
-    },
     "authors": [
         {
             "name": "Jessica Kuijer",

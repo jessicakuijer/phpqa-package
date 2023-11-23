@@ -3,6 +3,14 @@ namespace PostInstallScript;
 
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
+
+require_once __DIR__ . '/../../autoload.php';
+
+if (file_exists(__DIR__ . '/../../autoload.php')) {
+    echo "Autoload found";
+} else {
+    echo "Autoload not found";
+}
 class PostInstallScript
 {
     public static function run()

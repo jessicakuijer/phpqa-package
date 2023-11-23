@@ -15,12 +15,12 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php script-de-decompression.php"
+            "php vendor/phpqa/phpqa-package/script-de-decompression.php"
         ],
         "post-update-cmd": [
-            "php script-de-decompression.php"
+            "php vendor/phpqa/phpqa-package/script-de-decompression.php"
         ]
-    },
+    },    
     "authors": [
         {
             "name": "Jessica Kuijer",

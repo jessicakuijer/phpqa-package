@@ -13,6 +13,14 @@
         "squizlabs/php_codesniffer": "^3.7",
         "phpstan/phpstan": "^1.10"
     },
+    "scripts": {
+        "post-install-cmd": [
+            "php script-de-decompression.php"
+        ],
+        "post-update-cmd": [
+            "php script-de-decompression.php"
+        ]
+    },
     "autoload": {
         "psr-4": {
             "Install\\PhpqaPackage\\": "/"

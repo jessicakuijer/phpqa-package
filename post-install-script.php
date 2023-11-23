@@ -1,4 +1,11 @@
 <?php
+require_once __DIR__ . '/../../autoload.php';
+
+if (file_exists(__DIR__ . '/../../autoload.php')) {
+    echo "Autoload found";
+} else {
+    echo "Autoload not found";
+}
 
 // Chemins des fichiers de configuration dans votre package
 $configs = [

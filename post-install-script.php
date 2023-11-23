@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/../../autoload.php';
 
 // Chemins des fichiers de configuration dans votre package
 $configs = [
@@ -45,4 +44,5 @@ foreach ($dirs as $dir) {
             copy($item, $destinationPath); // Ici aussi, supprimez la vérification de l'existence du fichier
         }
     }
+    spl_autoload_register(__NAMESPACE__.'\Autoload::load', true, true);
 }

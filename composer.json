@@ -8,8 +8,8 @@
         "phpstan/phpstan": "^1.10"
     },
     "scripts": {
-        "post-install-cmd": "php ./vendor/phpqa/phpqa-package/post-install-script.php",
-        "post-update-cmd": "php ./vendor/phpqa/phpqa-package/post-install-script.php"
+        "post-install-cmd": "php post-install-script.php",
+        "post-update-cmd": "php post-install-script.php"
     },        
     "authors": [
         {

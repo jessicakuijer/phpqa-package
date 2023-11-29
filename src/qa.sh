@@ -34,13 +34,8 @@ echo "Analyse PHPStan terminée."
 
 # Execution de Kaktus
 echo "Exécution de Kaktus..."
-output2=$(php ./kaktus/kaktus -d ./src/ -l [critical / warning / notice])
-if echo "$output2" | grep -q "deprecated"; then
-    echo "Erreurs dépréciées trouvées par Kaktus mais non prises en compte"
-    exitCode=0
-fi
+output2=$(/.vendor/jessicakuijer/kaktus -d ./src/ -l [critical / warning / notice])
 echo "$output2"
-
 # Vérification des différents niveaux de logs pour Kaktus
 if echo "$output2" | grep -q "[ CRITICAL] "; then
     echo "Erreur CRITICAL trouvée par Kaktus"

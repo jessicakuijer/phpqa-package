@@ -1,6 +1,8 @@
 {
     "name": "phpqa/phpqa-package",
     "description": "Use simple script or grumphp to use custom phpQA tools on your projects",
+    "type": "library",
+    "license": "MIT",
     "require": {
         "phpro/grumphp": "^2.2",
         "phpmd/phpmd": "^2.14",

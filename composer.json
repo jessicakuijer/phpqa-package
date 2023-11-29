@@ -5,7 +5,8 @@
         "phpro/grumphp": "^2.2",
         "phpmd/phpmd": "^2.14",
         "squizlabs/php_codesniffer": "^3.7",
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^1.10",
+        "jessicakuijer/kaktus": "^1.0.0"
     },
     "scripts": {
         "post-install-cmd": "PostInstallScript\\PostInstallScript::run",

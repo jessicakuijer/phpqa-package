@@ -5,7 +5,7 @@ exitCode=0
 
 # Exécuter PHPMD
 echo "Lancement de PHP Mess Detector..."
-composer run phpmd
+./vendor/bin/phpmd $1 text codesize,unusedcode,naming
 
 # Vérifier si PHPMD a détecté des erreurs
 if [ $? -ne 0 ]; then

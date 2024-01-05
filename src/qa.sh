@@ -28,8 +28,14 @@ echo "Analyse CodeSniffer terminée."
 
 # Exécution de PHPStan
 echo "Exécution de PHPStan..."
-output=$(./vendor/bin/phpstan analyse)
+output=$(./vendor/bin/phpstan analyse $1)
 echo "$output"
+
+if [ -n "$output" ]; then
+    echo "Erreurs détectées par PHPStan"
+    exitCode=1
+fi
+
 echo "Analyse PHPStan terminée."
 
 # Execution de Kaktus

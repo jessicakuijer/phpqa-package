@@ -13,6 +13,7 @@
     "scripts": {
         "post-install-cmd": [
             "@php -r \"file_exists('./phpmd.xml') || copy('./vendor/phpqa/phpqa-package/src/phpmd.xml', './phpmd.xml');\"",
+            "@php -r \"file_exists('./phpstan.dist.neon') || copy('./vendor/phpqa/phpqa-package/src/phpstan.dist.neon', './phpstan.dist.neon');\"",
             "PostInstallScript\\PostInstallScript::run"
         ],
         "post-update-cmd": "PostInstallScript\\PostInstallScript::run"

@@ -11,9 +11,12 @@
         "jessicakuijer/kaktus": "^1.0.0"
     },
     "scripts": {
-        "post-install-cmd": "PostInstallScript\\PostInstallScript::run",
+        "post-install-cmd": [
+            "@php -r \"file_exists('./phpmd.xml') || copy('./vendor/phpqa/phpqa-package/src/phpmd.xml', './phpmd.xml');\"",
+            "PostInstallScript\\PostInstallScript::run"
+        ],
         "post-update-cmd": "PostInstallScript\\PostInstallScript::run"
-    },        
+    },
     "authors": [
         {
             "name": "Jessica Kuijer",

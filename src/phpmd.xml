@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ruleset name="My first PHPMD rule set"
+<ruleset name="Generic default rules"
          xmlns="http://pmd.sf.net/ruleset/1.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
          xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
-    <description>Mon premier ensemble de règles PHPMD</description>
-    <!-- règles à appliquer -->
+    <description>Default rules</description>
+
+    <exclude-pattern>vendor</exclude-pattern>
+    <exclude-pattern>test</exclude-pattern>
+
+    <rule ref="rulesets/codesize.xml"/>
     <rule ref="rulesets/unusedcode.xml"/>
-     <!-- PHPMD cannot recognize parameters that are enforced by an interface -->
-    <exclude name="UnusedFormalParameter"/>
-    <!-- <rule ref="rulesets/naming.xml"/>
-    <rule ref="rulesets/controversial.xml"/>
-    <rule ref="rulesets/design.xml"/>
-    <rule ref="rulesets/cleancode.xml"/> -->
+    <rule ref="rulesets/naming.xml"/>
+
+    <!-- The default reportLevel is < 10, which is misleading. -->
     <rule ref="rulesets/codesize.xml/CyclomaticComplexity">
         <properties>
             <property name="reportLevel" value="11"/>

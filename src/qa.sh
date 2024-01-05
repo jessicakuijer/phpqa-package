@@ -16,7 +16,7 @@ echo "Analyse PHPMD terminée."
 
 # Exécution de CodeSniffer
 echo "Exécution de CodeSniffer..."
-output=$(./vendor/bin/phpcs ./src/)
+output=$(./vendor/bin/phpcs $1)
 echo "$output"
 
 # Vérifier si CodeSniffer a détecté des erreurs

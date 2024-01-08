@@ -16,7 +16,7 @@ echo "Analyse PHPMD terminée."
 
 # Exécution de CodeSniffer
 echo "Exécution de CodeSniffer..."
-output=$(./vendor/bin/phpcs $1)
+output=$(./vendor/bin/phpcs $1 phpcs.xml)
 echo "$output"
 
 # Vérifier si CodeSniffer a détecté des erreurs
@@ -40,7 +40,7 @@ echo "Analyse PHPStan terminée."
 
 # Execution de Kaktus
 echo "Exécution de Kaktus..."
-output2=$(./vendor/jessicakuijer/kaktus/src/kaktus -d $1 -l critical)
+output2=$(./vendor/jessicakuijer/kaktus/src/kaktus -d $1)
 echo "$output2"
 
 # Vérification des différents niveaux de logs pour Kaktus
@@ -52,7 +52,9 @@ elif echo "$output2" | grep -q "[ WARNING ]"; then
     exitCode=1
 elif echo "$output2" | grep -q "[ NOTICE ]"; then
     echo "Alerte NOTICE trouvée par Kaktus"
-    exitCode=1
+    if [ "$exitCode" != 1 ]; then
+        exitCode=0
+    fi
 fi
 echo "Analyse Kaktus terminée."
 

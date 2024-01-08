@@ -5,7 +5,7 @@ exitCode=0
 
 # Exécuter PHPMD
 echo "Lancement de PHP Mess Detector..."
-./vendor/bin/phpmd $1 text codesize,unusedcode,naming
+./vendor/bin/phpmd ./src text codesize,unusedcode,naming
 
 # Vérifier si PHPMD a détecté des erreurs
 if [ $? -ne 0 ]; then
@@ -16,7 +16,7 @@ echo "Analyse PHPMD terminée."
 
 # Exécution de CodeSniffer
 echo "Exécution de CodeSniffer..."
-output=$(./vendor/bin/phpcs $1)
+output=$(./vendor/bin/phpcs ./src)
 echo "$output"
 
 # Vérifier si CodeSniffer a détecté des erreurs
@@ -28,7 +28,7 @@ echo "Analyse CodeSniffer terminée."
 
 # Exécution de PHPStan
 echo "Exécution de PHPStan..."
-output=$(./vendor/bin/phpstan analyse $1)
+output=$(./vendor/bin/phpstan analyse ./src)
 echo "$output"
 
 if [ -n "$output" ]; then
@@ -40,7 +40,7 @@ echo "Analyse PHPStan terminée."
 
 # Execution de Kaktus
 echo "Exécution de Kaktus..."
-output2=$(./vendor/jessicakuijer/kaktus/src/kaktus -d $1 -l [critical / warning / notice])
+output2=$(php ./vendor/jessicakuijer/kaktus/src/kaktus -d ./src -l [critical / warning / notice])
 echo "$output2"
 
 # Vérification des différents niveaux de logs pour Kaktus

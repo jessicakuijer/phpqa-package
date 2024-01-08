@@ -40,7 +40,7 @@ echo "Analyse PHPStan terminée."
 
 # Execution de Kaktus
 echo "Exécution de Kaktus..."
-output2=$(./vendor/jessicakuijer/kaktus/src/kaktus -d $1 -l [critical / warning / notice])
+output2=$(./vendor/jessicakuijer/kaktus/src/kaktus -d $1 -l critical)
 echo "$output2"
 
 # Vérification des différents niveaux de logs pour Kaktus

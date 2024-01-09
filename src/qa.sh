@@ -40,17 +40,17 @@ echo "Analyse PHPStan terminée."
 
 # Execution de Kaktus
 echo "Exécution de Kaktus..."
-output2=$(./vendor/jessicakuijer/kaktus/src/kaktus -d $1)
+output2=$(./vendor/jessicakuijer/kaktus/src/kaktus -d $1 -l notice)
 echo "$output2"
 
 # Vérification des différents niveaux de logs pour Kaktus
-if echo "$output2" | grep -q "[ CRITICAL ] "; then
+if echo "$output2" | grep -q "CRITICAL"; then
     echo "Erreur CRITICAL trouvée par Kaktus"
     exitCode=1
-elif echo "$output2" | grep -q "[ WARNING ]"; then
+elif echo "$output2" | grep -q "WARNING"; then
     echo "Alerte WARNING trouvée par Kaktus"
     exitCode=1
-elif echo "$output2" | grep -q "[ NOTICE ]"; then
+elif echo "$output2" | grep -q "NOTICE"; then
     echo "Alerte NOTICE trouvée par Kaktus"
     if [ "$exitCode" != 1 ]; then
         exitCode=0

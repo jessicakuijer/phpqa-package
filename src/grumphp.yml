@@ -31,4 +31,5 @@ grumphp:
                     scopes: ~
                     subject_pattern: >-
                         ([a-zA-Zа-яА-Я0-9-_ #@'\/\"]+)
+    ascii: ~
     

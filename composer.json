@@ -16,6 +16,7 @@
             "@php -r \"file_exists('./phpstan.neon') || copy('./vendor/phpqa/phpqa-package/src/phpstan.dist.neon', './phpstan.neon');\"",
             "@php -r \"file_exists('./phpcs.xml') || copy('./vendor/phpqa/phpqa-package/src/phpcs.xml.dist', './phpcs.xml');\"",
             "@php -r \"file_exists('./grumphp.yml') || copy('./vendor/phpqa/phpqa-package/src/grumphp.yml', './grumphp.yml');\"",
+            "@php -r \"file_exists('./kaktus.ini') || copy('./vendor/phpqa/phpqa-package/src/kaktus.dist.ini', './kaktus.ini');\"",
             "PostInstallScript\\PostInstallScript::run"
         ],
         "post-update-cmd": "PostInstallScript\\PostInstallScript::run"

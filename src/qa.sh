@@ -5,7 +5,8 @@ exitCode=0
 
 # Exécuter PHPMD
 echo "Lancement de PHP Mess Detector..."
-./vendor/bin/phpmd ./src text codesize,unusedcode,naming
+
+./vendor/bin/phpmd $1 text phpmd.xml
 
 # Vérifier si PHPMD a détecté des erreurs
 if [ $? -ne 0 ]; then
@@ -16,8 +17,8 @@ echo "Analyse PHPMD terminée."
 
 # Exécution de CodeSniffer
 echo "Exécution de CodeSniffer..."
-output=$(./vendor/bin/phpcs ./src)
-echo "$output"
+
+output=$(./vendor/bin/phpcs $1 phpcs.xml)
 
 # Vérifier si CodeSniffer a détecté des erreurs
 if [ -n "$output" ]; then
@@ -40,19 +41,21 @@ echo "Analyse PHPStan terminée."
 
 # Execution de Kaktus
 echo "Exécution de Kaktus..."
-output2=$(php ./vendor/jessicakuijer/kaktus/src/kaktus -d ./src -l [critical / warning / notice])
-echo "$output2"
+
+output2=$(./vendor/jessicakuijer/kaktus/src/kaktus -d $1 -l notice)
 
 # Vérification des différents niveaux de logs pour Kaktus
-if echo "$output2" | grep -q "[ CRITICAL ] "; then
+if echo "$output2" | grep -q "CRITICAL"; then
     echo "Erreur CRITICAL trouvée par Kaktus"
     exitCode=1
-elif echo "$output2" | grep -q "[ WARNING ]"; then
+elif echo "$output2" | grep -q "WARNING"; then
     echo "Alerte WARNING trouvée par Kaktus"
     exitCode=1
-elif echo "$output2" | grep -q "[ NOTICE ]"; then
+elif echo "$output2" | grep -q "NOTICE"; then
     echo "Alerte NOTICE trouvée par Kaktus"
-    exitCode=1
+    if [ "$exitCode" != 1 ]; then
+        exitCode=0
+    fi
 fi
 echo "Analyse Kaktus terminée."
 

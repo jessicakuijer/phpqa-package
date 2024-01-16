@@ -7,7 +7,7 @@ grumphp:
             # triggered_by: ['php', 'phtml']
         shell:
             scripts:
-                - ./qa.sh
+                - ["-c", "./vendor/phpqa/phpqa-package/src/qa.sh PATH_TO_AUDIT"]
             triggered_by: ['php', 'phtml']
         git_commit_message:
                 allow_empty_message: false
@@ -31,4 +31,5 @@ grumphp:
                     scopes: ~
                     subject_pattern: >-
                         ([a-zA-Zа-яА-Я0-9-_ #@'\/\"]+)
+    ascii: ~
     

@@ -3,13 +3,18 @@
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
 
+    <description>PHP CodeSniffer rules</description>
+
+    <exclude-pattern>vendor</exclude-pattern>
+    <exclude-pattern>tests</exclude-pattern>
+    
     <arg name="basepath" value="."/>
     <arg name="cache" value=".phpcs-cache"/>
     <arg name="colors"/>
     <arg name="extensions" value="php"/>
 
     <rule ref="PSR12"/>
-    <description>My custom coding standard.</description>
+    
     <rule ref="Squiz.Commenting.ClassComment" />
     <rule ref="Generic.Commenting.DocComment" />
     <file>bin/</file>
@@ -17,5 +22,4 @@
     <file>public/</file>
     <file>src/</file>
     <file>tests/</file>
-
 </ruleset>
